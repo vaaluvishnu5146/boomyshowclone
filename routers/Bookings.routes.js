@@ -1,4 +1,5 @@
 const express = require("express");
+const Authentication = require("../middlewares/Authentication");
 
 // Create Bookings Router
 const BookingsRouter = express.Router();
@@ -11,39 +12,39 @@ const BookingsRouter = express.Router();
 
 //localhost:5000/api/showsPATH: http://localhost:5000/api/bookings
 
-BookingsRouter.get("/", (req, res, next) => {
+BookingsRouter.get("/", Authentication, (req, res, next) => {
   return res.status(200).json({
     message: "Fetched All Bookings",
     data: [],
   });
 });
 
-BookingsRouter.get("/:id", (req, res, next) => {
+BookingsRouter.get("/:id", Authentication, (req, res, next) => {
   return res.status(200).json({
     message: "Fetched A Booking",
     data: [],
   });
 });
 
-BookingsRouter.post("/create", (req, res, next) => {
+BookingsRouter.post("/create", Authentication, (req, res, next) => {
   return res.status(200).json({
     message: "Booking created successfully!!!",
   });
 });
 
-BookingsRouter.put("/update/:id", (req, res, next) => {
+BookingsRouter.put("/update/:id", Authentication, (req, res, next) => {
   return res.status(200).json({
     message: "Booking updated successfully!!!",
   });
 });
 
-BookingsRouter.patch("/update/:id", (req, res, next) => {
+BookingsRouter.patch("/update/:id", Authentication, (req, res, next) => {
   return res.status(200).json({
     message: "Booking patched successfully!!!",
   });
 });
 
-BookingsRouter.delete("/delete/:id", (req, res, next) => {
+BookingsRouter.delete("/delete/:id", Authentication, (req, res, next) => {
   return res.status(200).json({
     message: "Booking deleted successfully!!!",
   });

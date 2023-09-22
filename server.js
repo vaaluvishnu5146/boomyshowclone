@@ -2,6 +2,7 @@ const express = require("express");
 const API_SERVER = require("./services/service");
 const bodyParser = require("body-parser");
 const configDotenv = require("dotenv");
+const CORS = require("cors");
 
 // Loading .env variables into Process.env
 configDotenv.config();
@@ -10,6 +11,15 @@ const { init } = require("./dbConfig");
 init();
 // Create HTTP server
 const HTTP_SERVER = express();
+
+// ENABLING CROSS ORIGIN RESOURCE SHARING
+// INJECTING CORS
+HTTP_SERVER.use(
+  CORS({
+    origin: ["http://localhost:3000"],
+    methods: ["PUT", "POST"],
+  })
+);
 
 // COMMANDING SERVER TO BE AWARE OF INCOMING REQUEST TYPE
 // PARSER THE REQUEST AS application/json

@@ -54,7 +54,7 @@ const AuthSchema = new mongoose.Schema(
     },
     roles: {
       type: Array,
-      required: false,
+      default: ["user"],
     },
     isActive: {
       type: Boolean,
